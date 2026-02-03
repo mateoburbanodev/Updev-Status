@@ -2,11 +2,12 @@
   "name": "updev-status",
   "displayName": "Updev Status",
   "description": "Dynamic status bar button to run updev (merge develop) and show merge-conflict state per active file repo.",
-  "version": "0.1.0",
-  "publisher": "local",
+  "version": "1.0.1",
+  "publisher": "mateoburbanodev",
   "engines": {
     "vscode": "^1.85.0"
   },
+  "icon":"icon.png",
   "categories": [
     "Other"
   ],
@@ -50,5 +51,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/mateoburbanodev/Updev-Status.git"
+    }
 }
