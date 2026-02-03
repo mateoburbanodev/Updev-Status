@@ -1,6 +1,4 @@
-# 🚀 Updev Status
-
-![VS Code Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/mateoburbanodev.updev-status)
+# 🚀 Updev Status ![VS Code Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/mateoburbanodev.updev-status)
 
 **Updev Status** es una extensión de **VS Code** que añade un botón dinámico en la **barra de estado** para mantener tu rama sincronizada con `develop` (o la rama que quieras), detectando y ayudando a resolver **conflictos de merge** de forma visual y rápida.
 
