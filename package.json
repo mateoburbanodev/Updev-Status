@@ -1,0 +1,54 @@
+{
+  "name": "updev-status",
+  "displayName": "Updev Status",
+  "description": "Dynamic status bar button to run updev (merge develop) and show merge-conflict state per active file repo.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:updevStatus.click"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "updevStatus.click",
+        "title": "Updev Status: Click"
+      }
+    ],
+    "configuration": {
+      "title": "Updev Status",
+      "properties": {
+        "updevStatus.baseBranch": {
+          "type": "string",
+          "default": "develop",
+          "description": "Base branch to merge into your current branch (default: develop)."
+        },
+        "updevStatus.remoteName": {
+          "type": "string",
+          "default": "origin",
+          "description": "Remote name to fetch from (e.g., origin, Front)."
+        },
+        "updevStatus.refreshIntervalMs": {
+          "type": "number",
+          "default": 3000,
+          "minimum": 500,
+          "description": "How often to refresh the status bar state (ms)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
