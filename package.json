@@ -1,26 +1,49 @@
 {
   "name": "updev-status",
   "displayName": "Updev Status",
-  "description": "Dynamic status bar button to run updev (merge develop) and show merge-conflict state per active file repo.",
-  "version": "1.0.1",
+  "description": "Botón dinámico en la barra de estado para ejecutar updev (merge a develop) y mostrar el estado de conflictos por repositorio activo.",
+  "version": "1.0.2",
   "publisher": "mateoburbanodev",
   "engines": {
     "vscode": "^1.85.0"
   },
-  "icon":"icon.png",
-  "categories": [
-    "Other"
-  ],
+  "icon": "icon.png",
+  "categories": ["Other"],
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:updevStatus.click"
+    "onStartupFinished"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
         "command": "updevStatus.click",
-        "title": "Updev Status: Click"
+        "title": "Updev Status: Acción principal"
+      },
+      {
+        "command": "updevStatus.run",
+        "title": "Updev Status: Ejecutar updev"
+      },
+      {
+        "command": "updevStatus.resolveConflicts",
+        "title": "Updev Status: Resolver conflictos"
+      },
+      {
+        "command": "updevStatus.openKeybindings",
+        "title": "Updev Status: Configurar atajos de teclado"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "updevStatus.run",
+        "key": "ctrl+alt+u",
+        "mac": "cmd+alt+u",
+        "when": "workspaceFolderCount > 0"
+      },
+      {
+        "command": "updevStatus.resolveConflicts",
+        "key": "ctrl+alt+shift+u",
+        "mac": "cmd+alt+shift+u",
+        "when": "workspaceFolderCount > 0"
       }
     ],
     "configuration": {
@@ -29,31 +52,49 @@
         "updevStatus.baseBranch": {
           "type": "string",
           "default": "develop",
-          "description": "Base branch to merge into your current branch (default: develop)."
+          "description": "Rama base que se integrará en la rama actual (por defecto: develop)."
         },
         "updevStatus.remoteName": {
           "type": "string",
           "default": "origin",
-          "description": "Remote name to fetch from (e.g., origin, Front)."
+          "description": "Nombre del remoto desde el que se hará fetch (por ejemplo: origin, Front)."
         },
         "updevStatus.refreshIntervalMs": {
           "type": "number",
           "default": 3000,
           "minimum": 500,
-          "description": "How often to refresh the status bar state (ms)."
+          "description": "Frecuencia con la que se actualiza el estado del botón en la barra (en milisegundos)."
+        },
+        "updevStatus.onConflictsRun": {
+          "type": "string",
+          "enum": ["openScm", "quickPick", "doNothing"],
+          "default": "quickPick",
+          "description": "Comportamiento al ejecutar 'Ejecutar updev' cuando existen conflictos pendientes."
+        },
+        "updevStatus.afterUpdev": {
+          "type": "string",
+          "enum": ["nothing", "suggestPush", "autoPush"],
+          "default": "suggestPush",
+          "description": "Qué hacer después de updev si NO hay conflictos."
         }
       }
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No hay tests configurados\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "git",
+    "merge",
+    "develop",
+    "conflictos",
+    "workflow"
+  ],
+  "author": "Mateo Burbano Klinger",
   "license": "ISC",
   "type": "commonjs",
   "repository": {
-        "type": "git",
-        "url": "https://github.com/mateoburbanodev/Updev-Status.git"
-    }
+    "type": "git",
+    "url": "https://github.com/mateoburbanodev/Updev-Status.git"
+  }
 }
