@@ -2,13 +2,15 @@
   "name": "updev-status",
   "displayName": "Updev Status",
   "description": "Botón dinámico en la barra de estado para ejecutar updev (merge a develop) y mostrar el estado de conflictos por repositorio activo.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "mateoburbanodev",
   "engines": {
     "vscode": "^1.85.0"
   },
   "icon": "icon.png",
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onStartupFinished"
   ],
@@ -67,13 +69,21 @@
         },
         "updevStatus.onConflictsRun": {
           "type": "string",
-          "enum": ["openScm", "quickPick", "doNothing"],
+          "enum": [
+            "openScm",
+            "quickPick",
+            "doNothing"
+          ],
           "default": "quickPick",
           "description": "Comportamiento al ejecutar 'Ejecutar updev' cuando existen conflictos pendientes."
         },
         "updevStatus.afterUpdev": {
           "type": "string",
-          "enum": ["nothing", "suggestPush", "autoPush"],
+          "enum": [
+            "nothing",
+            "suggestPush",
+            "autoPush"
+          ],
           "default": "suggestPush",
           "description": "Qué hacer después de updev si NO hay conflictos."
         }
